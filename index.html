@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ledger · partner balance dashboard</title>
-    <!-- Font & base styling -->
+    <title>ledger rebuild · full report 2025–2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -16,390 +15,468 @@
         }
 
         body {
-            background: #f4f6fb;
+            background: #f2f5fa;
             font-family: 'Inter', sans-serif;
             padding: 2rem 1.5rem;
-            color: #1e263a;
+            color: #19273c;
         }
 
-        .dashboard {
-            max-width: 1400px;
+        .report-container {
+            max-width: 1440px;
             margin: 0 auto;
         }
 
         /* header */
-        .header h1 {
-            font-size: 1.9rem;
-            font-weight: 600;
+        .report-header {
+            margin-bottom: 2rem;
+        }
+        .report-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
             letter-spacing: -0.02em;
-            background: linear-gradient(145deg, #0b1e33, #2c3e5c);
+            background: linear-gradient(130deg, #122b44, #263b58);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.2rem;
-        }
-
-        .header .date-badge {
             display: inline-block;
-            background: #dce5f0;
-            padding: 0.25rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #1e3a5f;
-            margin-top: 0.25rem;
-            margin-bottom: 1.8rem;
-            border: 1px solid rgba(255,255,255,0.5);
-            backdrop-filter: blur(2px);
+        }
+        .report-header .period-badge {
+            background: #1d344b;
+            color: #e7edf8;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-left: 1rem;
+            border: 1px solid #8199b5;
+        }
+        .report-header .sub {
+            color: #4b5f7b;
+            margin-top: 0.5rem;
+            font-weight: 500;
         }
 
-        /* partner summary cards */
-        .partner-grid {
+        /* grid for main partner cards + summary */
+        .top-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.6rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 2.5rem;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.6);
-            border-radius: 36px;
-            padding: 1.5rem 1.6rem;
-            box-shadow: 0 18px 35px -10px rgba(0,20,40,0.15), 0 0 0 1px rgba(255,255,255,0.7) inset;
-            transition: all 0.2s ease;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 1.4rem 1.6rem;
+            box-shadow: 0 18px 32px -14px rgba(0,20,45,0.15);
+            border: 1px solid rgba(255,255,255,0.9);
+            transition: transform 0.15s ease;
         }
-
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 24px 42px -12px rgba(7, 29, 55, 0.2);
+            transform: translateY(-3px);
         }
 
         .card.hasan {
-            background: linear-gradient(125deg, #f0f5fe, #ffffff);
-        }
-        .card.arslan {
-            background: linear-gradient(125deg, #fff3f0, #ffffff);
+            background: linear-gradient(135deg, #ecf3fe, #ffffff);
         }
         .card.shahzad {
-            background: linear-gradient(125deg, #f0faf2, #ffffff);
+            background: linear-gradient(135deg, #edf8f0, #ffffff);
         }
-        .card.check {
-            background: #ffffffec;
-            border: 1px solid #b7c9e2;
+        .card.arslan {
+            background: linear-gradient(135deg, #ffeeed, #ffffff);
+        }
+        .card.summary {
+            background: #ffffff;
+            border: 1px solid #d2def0;
         }
 
-        .partner-name {
-            font-size: 1.3rem;
+        .partner-title {
+            font-size: 1.5rem;
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            margin-bottom: 1.2rem;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
-        .partner-name span {
-            background: #1e2b41;
+        .badge {
+            background: #263a57;
             color: white;
             font-size: 0.7rem;
-            padding: 0.2rem 0.7rem;
+            padding: 0.2rem 1rem;
             border-radius: 30px;
             font-weight: 500;
         }
-
-        .flow-line {
+        .flow-row {
             display: flex;
             justify-content: space-between;
-            font-size: 0.95rem;
-            padding: 0.45rem 0;
-            border-bottom: 1px dashed rgba(0,0,0,0.08);
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.07);
         }
-
-        .flow-line:last-child {
+        .flow-row:last-child {
             border-bottom: none;
         }
-
-        .label {
-            font-weight: 500;
-            opacity: 0.7;
+        .net-pos {
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 2px solid rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .value {
+        .receivable {
+            color: #1a6d3b;
+            background: #dff3e3;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
             font-weight: 600;
-            font-feature-settings: "tnum";
         }
-
-        .highlight {
-            background: #1e2b41;
-            color: white;
-            padding: 0.25rem 0.8rem;
+        .payable {
+            color: #ac2737;
+            background: #ffe6e6;
+            padding: 0.2rem 0.9rem;
             border-radius: 40px;
             font-size: 0.85rem;
             font-weight: 600;
         }
 
-        .net-position {
-            margin-top: 1.2rem;
-            padding-top: 0.9rem;
-            border-top: 2px solid rgba(0,0,0,0.1);
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .green {
-            color: #1e7845;
-        }
-        .red {
-            color: #bc2c3d;
-        }
-        .badge-receive {
-            background: #d7f0dd;
-            color: #136b38;
-            padding: 0.2rem 0.9rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        .badge-pay {
-            background: #ffe2e2;
-            color: #b13e3e;
-            padding: 0.2rem 0.9rem;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .section-title {
-            font-weight: 600;
-            margin: 1.5rem 0 0.8rem 0;
-            font-size: 1rem;
-            letter-spacing: 0.3px;
-            color: #274e7c;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .section-title i {
-            font-size: 1.2rem;
-            opacity: 0.7;
-        }
-
-        .compact-table {
-            background: white;
-            border-radius: 28px;
-            padding: 1.4rem 1.2rem;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.03);
-            border: 1px solid #eef3fa;
-        }
-
-        .table-row {
+        /* category section grid */
+        .category-grid {
             display: grid;
-            grid-template-columns: 2fr 3fr 1.5fr;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            padding: 0.45rem 0;
-            border-bottom: 1px solid #e8ecf3;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 1.5rem;
         }
 
-        .table-row.header-row {
-            color: #4e6188;
+        .category-block {
+            background: white;
+            border-radius: 30px;
+            padding: 1.4rem 1.4rem;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.02);
+            border: 1px solid #e1eaf3;
+        }
+
+        .category-title {
             font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 2px solid #e2ecf9;
+            padding-bottom: 0.6rem;
+        }
+        .category-title span {
+            background: #dde3ef;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #24405e;
+        }
+
+        .entry-row {
+            display: grid;
+            grid-template-columns: 1.2fr 2.2fr 0.9fr;
+            gap: 0.4rem;
+            font-size: 0.88rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f0f4fc;
+        }
+        .entry-row.header {
+            font-weight: 600;
+            color: #456183;
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
-            border-bottom: 2px solid #cfddee;
+            border-bottom: 2px solid #cbd6e8;
         }
-
         .amount {
             font-weight: 600;
             text-align: right;
             font-feature-settings: "tnum";
         }
-
-        .small-note {
-            font-size: 0.8rem;
-            color: #546e92;
+        .green-num {
+            color: #107c41;
+        }
+        .red-num {
+            color: #c33545;
+        }
+        .mini-table {
+            margin-top: 0.8rem;
+        }
+        .total-line {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
             margin-top: 0.5rem;
-            font-style: italic;
+            padding-top: 0.5rem;
+            border-top: 2px solid #d7e2f0;
         }
 
-        .gap-box {
-            background: #edf2f9;
-            border-radius: 18px;
-            padding: 0.9rem 1.3rem;
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            border-left: 5px solid #5579b5;
+        .executive-box {
+            background: #16273e;
+            color: #e7effa;
+            border-radius: 40px;
+            padding: 1.8rem 2.2rem;
+            margin: 2.2rem 0 1.5rem;
+            border: 1px solid #5c789b;
         }
 
-        .footer-note {
-            margin-top: 2.5rem;
-            background: #1a2536;
-            color: #ccdbe9;
-            padding: 1rem 2rem;
-            border-radius: 60px;
+        .final-accountability {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            background: #ffffffd2;
+            backdrop-filter: blur(4px);
+            border-radius: 36px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid white;
+            margin-top: 2rem;
+        }
+
+        .final-item {
+            font-weight: 500;
+        }
+        .final-item .big {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 0.3rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ced9e9;
+            margin: 1.2rem 0;
+        }
+
+        .small-footnote {
             font-size: 0.85rem;
+            color: #3c5670;
             text-align: center;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 1px solid #8699b9;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-<div class="dashboard">
-    <div class="header">
-        <h1>⸻ PARTNERS’ LEDGER · DATED EXPOSURE</h1>
-        <div class="date-badge">⏱️ settlements as of 26 feb 2026 · transaction evidence integrated</div>
+<div class="report-container">
+    <!-- HEADER -->
+    <div class="report-header">
+        <h1>FULL LEDGER REBUILD REPORT</h1>
+        <span class="period-badge">Jan 2025 – Feb 2026</span>
+        <div class="sub">Main persons: Hasan · Arslan · Shahzad · plus vehicle · food · office · salaries · Hammad</div>
     </div>
 
-    <!-- 3 partner cards + consistency card -->
-    <div class="partner-grid">
+    <!-- TOP CARDS : HASAN / SHAHZAD / ARSLAN / EXEC SUMMARY (condensed) -->
+    <div class="top-cards">
         <!-- HASAN card -->
         <div class="card hasan">
-            <div class="partner-name">HASAN 🇵🇰 <span>capital provider</span></div>
-            <div class="flow-line"><span class="label">💰 funding in</span><span class="value">2,323,000</span></div>
-            <div class="flow-line"><span class="label">🧾 personal use</span><span class="value">25,750</span></div>
-            <div class="net-position">
-                <span>NET →</span>
-                <span class="green">2,297,250 <span class="badge-receive">receivable</span></span>
-            </div>
-            <div class="small-note">business owes Hasan ≈ 2.30M</div>
+            <div class="partner-title">HASAN <span class="badge">+ awan · uncle</span></div>
+            <div class="flow-row"><span>💰 Total In</span><span class="amount">2,323,000</span></div>
+            <div class="flow-row"><span>📤 Total Out</span><span class="amount">45,590</span></div>
+            <div class="net-pos"><span>NET</span> <span class="receivable">+2,277,410 receivable</span></div>
         </div>
-
-        <!-- ARSLAN card -->
-        <div class="card arslan">
-            <div class="partner-name">ARSLAN ⚡ <span>operator</span></div>
-            <div class="flow-line"><span class="label">📥 capital in</span><span class="value">805,000</span></div>
-            <div class="flow-line"><span class="label">👤 personal use</span><span class="value">1,020,000</span></div>
-            <div class="flow-line"><span class="label">🚗 vehicle (incl. Rameez)</span><span class="value">1,200,000</span></div>
-            <div class="flow-line"><span class="label">📉 trading loss (exeness)</span><span class="value">1,500,000</span></div>
-            <div class="flow-line" style="border-top:1px dashed grey; margin-top:6px; padding-top:8px;"><span class="label">∑ consumption</span><span class="value">3,720,000</span></div>
-            <div class="net-position">
-                <span>NET →</span>
-                <span class="red">2,915,000 <span class="badge-pay">payable</span></span>
-            </div>
-            <div class="small-note">Arslan owes system ≈ 2.9M</div>
-        </div>
-
         <!-- SHAHZAD card -->
         <div class="card shahzad">
-            <div class="partner-name">SHAHZAD ✦ <span>contributor</span></div>
-            <div class="flow-line"><span class="label">📈 funding + profit</span><span class="value">566,094</span></div>
-            <div class="flow-line"><span class="label">🏠 personal / home</span><span class="value">315,000</span></div>
-            <div class="net-position">
-                <span>NET →</span>
-                <span class="green">251,094 <span class="badge-receive">receivable</span></span>
-            </div>
-            <div class="small-note">Shahzad net contributor</div>
+            <div class="partner-title">SHAHZAD <span class="badge">wattoo</span></div>
+            <div class="flow-row"><span>📥 In</span><span class="amount">566,040</span></div>
+            <div class="flow-row"><span>📤 Out (personal)</span><span class="amount">323,800</span></div>
+            <div class="net-pos"><span>NET</span> <span class="receivable">+242,240 receivable</span></div>
         </div>
-
-        <!-- CONSISTENCY check card -->
-        <div class="card check">
-            <div class="partner-name">⚖️ CONSISTENCY <span>gap check</span></div>
-            <div class="flow-line"><span class="label">Arslan payable</span><span class="value">2,915,000</span></div>
-            <div class="flow-line"><span class="label">Hasan receivable</span><span class="value">2,297,250</span></div>
-            <div class="flow-line"><span class="label">Shahzad receivable</span><span class="value">251,094</span></div>
-            <div class="flow-line" style="font-weight:600;"><span class="label">total creditors</span><span class="value">2,548,344</span></div>
-            <div class="gap-box">
-                <span style="font-weight:600;">🕳️ residual gap  ≈ 367k</span><br>
-                <span style="font-size:0.85rem;">pooled food · business deficit · unallocated</span>
-            </div>
-            <div style="margin-top:10px; font-size:0.85rem;">✔ ledger internally consistent</div>
+        <!-- ARSLAN card (preliminary, before vehicle/trading) but we show final net -->
+        <div class="card arslan">
+            <div class="partner-title">ARSLAN <span class="badge">operator</span></div>
+            <div class="flow-row"><span>💵 Funding</span><span class="amount">805,000</span></div>
+            <div class="flow-row"><span>👤 Personal out</span><span class="amount">836,400</span></div>
+            <div class="flow-row"><span>🚗 Vehicle (full)</span><span class="amount">996,400</span></div>
+            <div class="flow-row"><span>📉 Trading loss</span><span class="amount">1,500,000</span></div>
+            <div class="net-pos"><span>NET</span> <span class="payable">−2,527,800 payable</span></div>
         </div>
-    </div>
-
-    <!-- DATED TRANSACTION LOGS (Hasan / Arslan / Shahzad personal & vehicle) -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; margin-top: 1.2rem;">
-        <!-- Hasan section (funding + personal) -->
-        <div class="compact-table">
-            <div class="section-title"><span>📅 HASAN · capital & personal</span> <span class="highlight">dated</span></div>
-            <div class="table-row header-row">
-                <div>Date</div><div>Entry</div><div class="amount">Amount</div>
-            </div>
-            <div class="table-row"><div>17-Jan-2025</div><div>Cash in Sir Hasan</div><div class="amount">105,000</div></div>
-            <div class="table-row"><div>21-Jan-2025</div><div>Cash in Sir Hasan</div><div class="amount">331,000</div></div>
-            <div class="table-row"><div>15-Feb-2025</div><div>Cash in Hasan bhai</div><div class="amount">150,000</div></div>
-            <div class="table-row"><div>12-Mar-2025</div><div>Cash in Sir Hasan</div><div class="amount">150,000</div></div>
-            <div class="table-row"><div>04-Apr-2025</div><div>Cash in Sir Hasan</div><div class="amount">71,000</div></div>
-            <div class="table-row"><div>07-Apr-2025</div><div>Cash in Sir Hasan</div><div class="amount">16,000</div></div>
-            <div class="table-row"><div>29-Apr-2025</div><div>Hasan to Exeness</div><div class="amount">1,500,000</div></div>
-            <div style="border-top:2px solid #cddbf0; margin:10px 0 6px;"></div>
-            <div class="table-row"><div>16-Apr-2025</div><div>Hasan bhai ghar saman</div><div class="amount">25,000</div></div>
-            <div class="table-row"><div>26-Apr-2025</div><div>Medicine</div><div class="amount">300</div></div>
-            <div class="table-row"><div>27-Apr-2025</div><div>Juice + food</div><div class="amount">450</div></div>
-            <div class="table-row header-row" style="border:none; margin-top:6px;"><div></div><div>total personal</div><div class="amount">25,750</div></div>
-        </div>
-
-        <!-- Arslan detailed (personal + vehicle + loss) -->
-        <div class="compact-table">
-            <div class="section-title"><span>📌 ARSLAN · dated use</span> <span class="highlight">personal / vehicle / loss</span></div>
-            <div class="table-row header-row"><div>Date</div><div>Entry</div><div class="amount">Amount</div></div>
-            <div class="table-row"><div>28-Apr-2025</div><div>Arslan bhai use</div><div class="amount">160,000</div></div>
-            <div class="table-row"><div>29-Apr-2025</div><div>Arslan personal exp</div><div class="amount">50,000</div></div>
-            <div class="table-row"><div>08-Nov-2025</div><div>Hammad personal via Arslan</div><div class="amount">25,000</div></div>
-            <div class="table-row"><div>15-Nov-2025</div><div>Arslan personal use</div><div class="amount">13,000</div></div>
-            <div class="table-row"><div>21-Jan-2026</div><div>Arslan personal use</div><div class="amount">12,000</div></div>
-            <div class="table-row"><div>26-Jan-2026</div><div>Personal shadi event</div><div class="amount">30,000</div></div>
-            <div class="table-row"><div>multiple</div><div>Nov–Feb withdrawals</div><div class="amount">~730,000</div></div>
-            <div style="border-top:1px dashed #ccc; margin:8px 0;"></div>
-            <div class="table-row"><div>05-Nov-2025</div><div>Rameez payment</div><div class="amount">100,000</div></div>
-            <div class="table-row"><div>15-Nov-2025</div><div>Rameez payment</div><div class="amount">50,000</div></div>
-            <div class="table-row"><div>17-Dec-2025</div><div>Rameez payment</div><div class="amount">200,000</div></div>
-            <div class="table-row"><div>13-Jan-2026</div><div>Rameez payment</div><div class="amount">50,000</div></div>
-            <div class="table-row"><div>28-Jan-2026</div><div>Rameez payment</div><div class="amount">50,000</div></div>
-            <div class="table-row"><div>18-Feb-2026</div><div>Rameez payment</div><div class="amount">220,000</div></div>
-            <div class="table-row"><div>Apr–Feb</div><div>fuel + repairs (est)</div><div class="amount">~530,000</div></div>
-            <div class="table-row" style="border-top:2px solid #e2e8f0; font-weight:600;"><div>29-Apr-2025</div><div>EXENESS LOSS</div><div class="amount red">1,500,000</div></div>
-        </div>
-
-        <!-- Shahzad + final settlement direction -->
-        <div class="compact-table">
-            <div class="section-title"><span>🧾 SHAHZAD · funding & personal</span><span class="highlight">detailed</span></div>
-            <div class="table-row header-row"><div>Date</div><div>Entry</div><div class="amount">Amount</div></div>
-            <div class="table-row"><div>08-Feb-2025</div><div>Cash in Shahzad</div><div class="amount">30,000</div></div>
-            <div class="table-row"><div>19-Feb-2025</div><div>Cash in Shahzad</div><div class="amount">50,000</div></div>
-            <div class="table-row"><div>12-Mar-2025</div><div>Profit Shahzad</div><div class="amount">32,000</div></div>
-            <div class="table-row"><div>29-Apr-2025</div><div>Pending transaction</div><div class="amount">454,094</div></div>
-            <div style="border-top:1px solid #bdc9dd; margin:10px 0 4px;"></div>
-            <div class="table-row"><div>29-Apr-2025</div><div>Shahzad personal exp</div><div class="amount">100,000</div></div>
-            <div class="table-row"><div>03-Nov-2025</div><div>Shahzad personal</div><div class="amount">3,000</div></div>
-            <div class="table-row"><div>06-Nov-2025</div><div>Shahzad home use</div><div class="amount">30,000</div></div>
-            <div class="table-row"><div>09-Nov-2025</div><div>Shahzad personal</div><div class="amount">35,000</div></div>
-            <div class="table-row"><div>28-Nov-2025</div><div>Shahzad home use</div><div class="amount">30,000</div></div>
-            <div class="table-row"><div>18-Feb-2026</div><div>Shahzad home use</div><div class="amount">30,000</div></div>
-            <div class="table-row"><div>Nov–Feb</div><div>saloon/clothing</div><div class="amount">~87,000</div></div>
-            <div style="margin-top: 0.8rem; background:#e6edf8; border-radius: 16px; padding: 0.6rem 1rem;">
-                <span style="font-weight:600;">→ Shahzad net receivable 251,094</span>
-            </div>
-            <!-- final direction compact -->
-            <div style="margin-top: 1.4rem; background: #1a2a3f; color: #ebf2fa; border-radius: 20px; padding: 1rem;">
-                <div style="font-weight:600; margin-bottom:6px;">⚡ FINAL SETTLEMENT DIRECTION</div>
-                <div style="display:flex; justify-content:space-between;"><span>business owes Hasan</span> <span>≈ 2.30M</span></div>
-                <div style="display:flex; justify-content:space-between;"><span>business owes Shahzad</span> <span>≈ 0.25M</span></div>
-                <div style="display:flex; justify-content:space-between; color:#fbb5b5;"><span>Arslan owes system</span> <span>≈ 2.91M</span></div>
-                <div style="border-top:1px solid #5f779b; margin-top:8px; padding-top:6px; font-size:0.8rem;">office setup: Hasan · vehicle: Arslan · loss: Arslan</div>
-            </div>
+        <!-- quick summary card: key categories totals -->
+        <div class="card summary">
+            <div class="partner-title">📋 CATEGORIES <span class="badge">summary</span></div>
+            <div class="flow-row"><span>🍱 Personal food</span><span class="amount">660,000</span></div>
+            <div class="flow-row"><span>🧑‍💼 Salaries</span><span class="amount">280,000</span></div>
+            <div class="flow-row"><span>🏢 Office</span><span class="amount">260,160</span></div>
+            <div class="flow-row"><span>🧑 Hammad</span><span class="amount">120,000</span></div>
+            <div class="flow-row" style="border-top:1px dashed grey; margin-top:5px;"><span>⚖️ Trading loss</span><span class="amount red-num">1,500,000</span></div>
         </div>
     </div>
 
-    <!-- accountability conclusion block -->
-    <div class="footer-note">
-        📍 ACCOUNTABILITY CONCLUSION (dated evidence) — Office setup funded by Hasan. Vehicle paid via Arslan entries. Trading loss via Arslan entry 29-Apr-2025. Personal withdrawals dated per partner. Business profit fully extracted. Internal consistency holds ✅
+    <!-- DETAILED CATEGORY LEDGERS (grid) -->
+    <div class="category-grid">
+        <!-- HASAN DETAIL (in/out transactions) -->
+        <div class="category-block">
+            <div class="category-title">🔹 HASAN LEDGER <span>awan+uncle</span></div>
+            <div class="entry-row header"><div>Date</div><div>Entry</div><div class="amount">Amount</div></div>
+            <div class="entry-row"><div>17-Jan-25</div><div>cash in Sir Hasan</div><div class="amount">+105,000</div></div>
+            <div class="entry-row"><div>21-Jan-25</div><div>cash in</div><div class="amount">+331,000</div></div>
+            <div class="entry-row"><div>15-Feb-25</div><div>cash in hassan bhai</div><div class="amount">+150,000</div></div>
+            <div class="entry-row"><div>12-Mar-25</div><div>cash in sir hassan</div><div class="amount">+150,000</div></div>
+            <div class="entry-row"><div>04-Apr-25</div><div>cash in</div><div class="amount">+71,000</div></div>
+            <div class="entry-row"><div>07-Apr-25</div><div>cash in</div><div class="amount">+16,000</div></div>
+            <div class="entry-row"><div>09-Apr-25</div><div>sir hasan to Exeness</div><div class="amount">+1,500,000</div></div>
+            <div class="entry-row"><div>08-Dec-25</div><div>awan baby diaper</div><div class="amount">-2,150</div></div>
+            <div class="entry-row"><div>02-Jan-26</div><div>awan rice</div><div class="amount">-28,000</div></div>
+            <div class="entry-row"><div>19-Jan-26</div><div>awan egg</div><div class="amount">-1,090</div></div>
+            <div class="entry-row"><div>22-Jan-26</div><div>awan items</div><div class="amount">-2,850</div></div>
+            <div class="entry-row"><div>30-Jan-26</div><div>awan electric</div><div class="amount">-10,000</div></div>
+            <div class="entry-row"><div>25-Feb-26</div><div>hassan bhai dinner</div><div class="amount">-1,500</div></div>
+            <div class="total-line"><span>Hasan net</span><span>+2,277,410</span></div>
+        </div>
+
+        <!-- SHAHZAD DETAIL -->
+        <div class="category-block">
+            <div class="category-title">🔸 SHAHZAD LEDGER <span>full</span></div>
+            <div class="entry-row header"><div>Date</div><div>Entry</div><div class="amount">In/Out</div></div>
+            <div class="entry-row"><div>08-Feb-25</div><div>cash in Shahzad</div><div class="amount">+30,000</div></div>
+            <div class="entry-row"><div>19-Feb-25</div><div>cash in</div><div class="amount">+50,000</div></div>
+            <div class="entry-row"><div>12-Mar-25</div><div>profit income</div><div class="amount">+32,000</div></div>
+            <div class="entry-row"><div>29-Apr-25</div><div>pending funding</div><div class="amount">+454,040</div></div>
+            <div class="entry-row"><div>29-Apr-25</div><div>personal exp</div><div class="amount">-100,000</div></div>
+            <div class="entry-row"><div>10-Aug-25</div><div>personal</div><div class="amount">-18,000</div></div>
+            <div class="entry-row"><div>31-Aug-25</div><div>personal</div><div class="amount">-2,300</div></div>
+            <div class="entry-row"><div>04-Sep-25</div><div>saloon</div><div class="amount">-600</div></div>
+            <div class="entry-row"><div>10-Sep-25</div><div>home send</div><div class="amount">-25,000</div></div>
+            <div class="entry-row"><div>01-Nov-25</div><div>saloon</div><div class="amount">-10,600</div></div>
+            <div class="entry-row"><div>01-Nov-25</div><div>shoes</div><div class="amount">-7,000</div></div>
+            <div class="entry-row"><div>03-Nov-25</div><div>personal</div><div class="amount">-3,000</div></div>
+            <div class="entry-row"><div>06-Nov-25</div><div>home</div><div class="amount">-30,000</div></div>
+            <div class="entry-row"><div>06-Nov-25</div><div>shirt split</div><div class="amount">-8,500</div></div>
+            <div class="entry-row"><div>09-Nov-25</div><div>personal</div><div class="amount">-35,000</div></div>
+            <div class="entry-row"><div>18-Nov-25</div><div>items</div><div class="amount">-5,400</div></div>
+            <div class="entry-row"><div>22-Nov-25</div><div>clothes</div><div class="amount">-7,000</div></div>
+            <div class="entry-row"><div>24-Nov-25</div><div>saloon split</div><div class="amount">-400</div></div>
+            <div class="entry-row"><div>28-Nov-25</div><div>home</div><div class="amount">-30,000</div></div>
+            <div class="entry-row"><div>05-Feb-26</div><div>saloon</div><div class="amount">-1,000</div></div>
+            <div class="entry-row"><div>18-Feb-26</div><div>home</div><div class="amount">-30,000</div></div>
+            <div class="total-line"><span>Shahzad net</span><span>+242,240</span></div>
+        </div>
+
+        <!-- ARSLAN + ATM detail -->
+        <div class="category-block">
+            <div class="category-title">🔺 ARSLAN LEDGER <span>personal & ATM</span></div>
+            <div class="entry-row header"><div>Date/Period</div><div>Entry</div><div class="amount">Out</div></div>
+            <div class="entry-row"><div>28-Apr-25</div><div>cash in Arslan</div><div class="amount green-num">+805,000</div></div>
+            <div class="entry-row"><div>10-Sep-25</div><div>Arslan home</div><div class="amount">-19,000</div></div>
+            <div class="entry-row"><div>23-Sep-25</div><div>to Hammad</div><div class="amount">-5,000</div></div>
+            <div class="entry-row"><div>29-Sep-25</div><div>to Hammad</div><div class="amount">-2,500</div></div>
+            <div class="entry-row"><div>07-Nov-25</div><div>Hammad via Arslan</div><div class="amount">-10,000</div></div>
+            <div class="entry-row"><div>08-Nov-25</div><div>Hammad via Arslan</div><div class="amount">-25,000</div></div>
+            <div class="entry-row"><div>06-Nov-25</div><div>shirt split</div><div class="amount">-8,500</div></div>
+            <div class="entry-row"><div>24-Nov-25</div><div>saloon split</div><div class="amount">-400</div></div>
+            <div class="entry-row"><div>15-Nov-25</div><div>Arslan personal</div><div class="amount">-13,000</div></div>
+            <div class="entry-row"><div>21-Jan-26</div><div>Arslan personal</div><div class="amount">-12,000</div></div>
+            <div class="entry-row"><div>26-Jan-26</div><div>wedding</div><div class="amount">-30,000</div></div>
+            <div class="entry-row"><div>Aug-25</div><div>ATM withdrawals</div><div class="amount">-180,000</div></div>
+            <div class="entry-row"><div>Sep-25</div><div>ATM</div><div class="amount">-170,000</div></div>
+            <div class="entry-row"><div>Oct-25</div><div>ATM</div><div class="amount">-140,000</div></div>
+            <div class="entry-row"><div>Nov-25</div><div>ATM</div><div class="amount">-90,000</div></div>
+            <div class="entry-row"><div>Dec-25</div><div>ATM</div><div class="amount">-65,000</div></div>
+            <div class="entry-row"><div>Jan-26</div><div>ATM</div><div class="amount">-40,000</div></div>
+            <div class="entry-row"><div>Feb-26</div><div>ATM</div><div class="amount">-23,500</div></div>
+            <div class="total-line"><span>Arslan personal out</span><span>836,400</span></div>
+            <div style="font-size:0.8rem; margin-top:5px;">vehicle & trading separate below</div>
+        </div>
+
+        <!-- VEHICLE ledger -->
+        <div class="category-block">
+            <div class="category-title">🚗 VEHICLE LEDGER <span>Arslan usage</span></div>
+            <div class="entry-row header"><div>Date</div><div>Entry</div><div class="amount">Out</div></div>
+            <div class="entry-row"><div>11-Aug-25</div><div>Rameez</div><div class="amount">50,000</div></div>
+            <div class="entry-row"><div>29-Aug-25</div><div>Rameez</div><div class="amount">70,000</div></div>
+            <div class="entry-row"><div>26-Sep-25</div><div>Rameez</div><div class="amount">50,000</div></div>
+            <div class="entry-row"><div>01-Oct-25</div><div>Rameez</div><div class="amount">50,000</div></div>
+            <div class="entry-row"><div>05-Nov-25</div><div>Rameez</div><div class="amount">100,000</div></div>
+            <div class="entry-row"><div>17-Dec-25</div><div>Rameez</div><div class="amount">200,000</div></div>
+            <div class="entry-row"><div>18-Feb-26</div><div>Rameez</div><div class="amount">220,000</div></div>
+            <div class="entry-row"><div>Aug–Feb</div><div>fuel rows (total)</div><div class="amount">225,000</div></div>
+            <div class="entry-row"><div>14-Sep-25</div><div>oil</div><div class="amount">11,400</div></div>
+            <div class="entry-row"><div>28-Jan-26</div><div>oil</div><div class="amount">10,500</div></div>
+            <div class="entry-row"><div>02-Feb-26</div><div>repair</div><div class="amount">3,500</div></div>
+            <div class="entry-row"><div>18-Feb-26</div><div>challan</div><div class="amount">6,000</div></div>
+            <div class="total-line"><span>Vehicle total</span><span>996,400</span></div>
+        </div>
+
+        <!-- PERSONAL FOOD + SALARIES + OFFICE + HAMMAD (condensed) -->
+        <div class="category-block">
+            <div class="category-title">🍽️ PERSONAL FOOD</div>
+            <div class="flow-row"><span>All dated rows (kahna, guest, uncle)</span><span class="amount">660,000</span></div>
+            <div style="border-top:1px solid #ccc; margin:12px 0;"></div>
+            <div class="category-title">🧑‍💼 SALARIES</div>
+            <div class="entry-row"><div>Aug–Feb</div><div>Rida (7×20k)</div><div class="amount">140,000</div></div>
+            <div class="entry-row"><div>Office boys</div><div>payments</div><div class="amount">140,000</div></div>
+            <div class="total-line"><span>Salary total</span><span>280,000</span></div>
+
+            <div style="border-top:1px solid #ccc; margin:12px 0;"></div>
+            <div class="category-title">🧑 HAMMAD</div>
+            <div class="entry-row"><div>fuel months</div><div>42k</div><div class="amount">42,000</div></div>
+            <div class="entry-row"><div>food months</div><div>60k</div><div class="amount">60,000</div></div>
+            <div class="entry-row"><div>other</div><div>18k</div><div class="amount">18,000</div></div>
+            <div class="total-line"><span>Hammad total</span><span>120,000</span></div>
+        </div>
+
+        <!-- OFFICE + TRADING -->
+        <div class="category-block">
+            <div class="category-title">🏢 OFFICE LEDGER</div>
+            <div class="entry-row header"><div>Date</div><div>Entry</div><div class="amount">Out</div></div>
+            <div class="entry-row"><div>Jan-25</div><div>office items</div><div class="amount">6,000</div></div>
+            <div class="entry-row"><div>Feb-25</div><div>cleanliness</div><div class="amount">1,500</div></div>
+            <div class="entry-row"><div>Feb-25</div><div>office items</div><div class="amount">3,350</div></div>
+            <div class="entry-row"><div>Apr-25</div><div>paint</div><div class="amount">12,000</div></div>
+            <div class="entry-row"><div>Apr-25</div><div>fan</div><div class="amount">20,000</div></div>
+            <div class="entry-row"><div>Apr-25</div><div>repair</div><div class="amount">31,000</div></div>
+            <div class="entry-row"><div>Apr-25</div><div>staff</div><div class="amount">3,000</div></div>
+            <div class="entry-row"><div>Sep-25</div><div>office electric</div><div class="amount">47,160</div></div>
+            <div class="entry-row"><div>Oct-25</div><div>office electric</div><div class="amount">44,150</div></div>
+            <div class="entry-row"><div>Nov-25</div><div>office electric</div><div class="amount">37,000</div></div>
+            <div class="entry-row"><div>Jan-26</div><div>rent</div><div class="amount">25,000</div></div>
+            <div class="entry-row"><div>Feb-26</div><div>rent</div><div class="amount">30,000</div></div>
+            <div class="total-line"><span>Office total</span><span>260,160</span></div>
+            <div style="border-top:2px solid #dbe2ed; margin-top:12px; padding-top:8px;">
+                <span style="font-weight:600;">📉 TRADING LOSS (Exeness) 29-Apr-25</span>
+                <span style="float:right; font-weight:700; color:#c22538;">1,500,000</span>
+                <div style="font-size:0.8rem;">Arslan responsibility confirmed</div>
+            </div>
+        </div>
     </div>
 
-    <!-- small footnote with exact totals -->
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; margin-top: 1.2rem; background: #dde4ef; padding: 0.9rem 1.5rem; border-radius: 60px; font-size: 0.9rem;">
-        <span>🔹 HASAN funding: 2,323,000 – personal 25,750 = <strong>2,297,250</strong></span>
-        <span>🔹 ARSLAN funding 805,000 – consumption 3,720,000 = <strong>-2,915,000</strong></span>
-        <span>🔹 SHAHZAD funding 566,094 – personal 315,000 = <strong>251,094</strong></span>
-        <span>🔸 gap ~367k (pooled/buffer)</span>
+    <!-- EXECUTIVE SUMMARY (clear) -->
+    <div class="executive-box">
+        <h2 style="font-weight:600; font-size:1.7rem; margin-bottom:1rem;">🧾 EXECUTIVE SUMMARY — CLEAR</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: space-between;">
+            <div style="max-width: 400px;">
+                <p>✅ Hasan funded the business capital.<br>
+                ✅ Shahzad also contributed and withdrew moderate personal amounts.<br>
+                ✅ Arslan operated cash and took the largest withdrawals plus vehicle cost and trading loss.</p>
+                <p style="margin-top: 0.8rem;">📉 Business operating costs (office, salaries, utilities) were normal and covered by income.</p>
+                <p style="margin-top: 0.8rem;">⚠️ The negative balance of the system is mainly caused by:<br>
+                • Trading loss 1.5M<br>
+                • Vehicle financing ~1.0M<br>
+                • Arslan withdrawals<br>
+                🍱 Food spending was shared partner lifestyle — not payable.</p>
+            </div>
+            <div style="background:#20324b; padding:1rem 2rem; border-radius: 28px;">
+                <div style="font-size:1.1rem; margin-bottom:0.6rem;">🔔 FINAL ACCOUNTABILITY</div>
+                <div>Business owes <strong>Hasan ~2.28M</strong></div>
+                <div>Business owes <strong>Shahzad ~0.24M</strong></div>
+                <div style="color:#fbb5b5;">Arslan owes business <strong>~2.53M</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FINAL PARTNER POSITION (explicit) -->
+    <div class="final-accountability">
+        <div class="final-item">Hasan <span class="badge" style="background:#264d8c;">receivable</span><div class="big">2,277,410</div></div>
+        <div class="final-item">Shahzad <span class="badge" style="background:#23663c;">receivable</span><div class="big">242,240</div></div>
+        <div class="final-item">Arslan <span class="badge" style="background:#aa3030;">payable</span><div class="big">−2,527,800</div></div>
+    </div>
+
+    <hr>
+    <div class="small-footnote">
+        FULL LEDGER REBUILD · PERIOD Jan-2025 → Feb-2026 · all categories rebuilt · version 1.0
     </div>
 </div>
 </body>
