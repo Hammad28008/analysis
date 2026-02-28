@@ -3,60 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>13‑month ledger · partner settlement</title>
+    <title>Partner settlement · 13‑month ledger</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
         }
         body {
-            background: #f6f9fc;
-            color: #172b3a;
-            padding: 1rem 1.5rem;
+            background: #f5f9ff;
+            color: #1b3347;
+            padding: 1.2rem 1.8rem;
         }
         .app {
-            max-width: 1600px;
+            max-width: 1500px;
             margin: 0 auto;
         }
-        /* STICKY EXECUTIVE SUMMARY PANEL */
+        /* executive summary panel – bottom position (but we keep at top as requested? actually we add both: sticky top and also final bottom block */
         .executive-sticky {
             position: sticky;
-            top: 0.75rem;
+            top: 0.6rem;
             z-index: 40;
             background: #ffffffec;
-            backdrop-filter: blur(8px);
-            border: 1px solid #dde7f0;
+            backdrop-filter: blur(6px);
+            border: 1px solid #cfddee;
             border-radius: 2rem;
-            padding: 1rem 2rem 1.2rem 2rem;
+            padding: 1rem 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 10px 25px -12px rgba(0,35,65,0.15);
+            box-shadow: 0 12px 24px -16px #1e3f60;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 2rem 3rem;
+            gap: 1.2rem 2.5rem;
         }
         .stat-badge {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            color: #3f5e7c;
-            letter-spacing: 0.3px;
+            color: #3f627f;
         }
         .stat-value {
-            font-size: 1.3rem;
-            font-weight: 620;
-            color: #0f2b40;
+            font-size: 1.2rem;
+            font-weight: 630;
+            color: #0a2f48;
         }
-        .conclusion-short {
-            max-width: 400px;
-            font-size: 0.9rem;
-            border-left: 2px solid #6ba0d1;
-            padding-left: 1.2rem;
-            background: #f0f8ff;
-            border-radius: 0 12px 12px 0;
-            padding: 0.5rem 1.2rem;
-        }
-        /* LAYOUT */
+        /* main layout */
         .grid-dash {
             display: flex;
             gap: 2rem;
@@ -66,59 +56,56 @@
             flex-shrink: 0;
             background: white;
             border-radius: 30px;
-            padding: 1.8rem 0.8rem;
+            padding: 1.8rem 0.5rem;
             position: sticky;
-            top: 6.5rem;
+            top: 5.5rem;
             height: fit-content;
-            border: 1px solid #e3ecf5;
-            box-shadow: 0 4px 14px rgba(0,20,40,0.02);
+            border: 1px solid #dae5f0;
         }
         .sidebar a {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 0.7rem 1.2rem;
-            margin: 0.2rem 0.4rem;
+            padding: 0.65rem 1.2rem;
+            margin: 0.2rem 0.5rem;
             border-radius: 40px;
-            color: #1f3f5c;
+            color: #1e3f5c;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 460;
-            transition: 0.1s;
         }
         .sidebar a:hover {
-            background: #e3effa;
-            color: #0b385b;
+            background: #e4effa;
+            color: #0c3f64;
         }
         .main {
             flex: 1;
             min-width: 0;
         }
         section {
-            scroll-margin-top: 6rem;
+            scroll-margin-top: 5rem;
             background: white;
             border-radius: 28px;
-            padding: 1.6rem 2rem;
+            padding: 1.8rem 2rem;
             margin-bottom: 2.2rem;
-            border: 1px solid #e3ebf3;
-            box-shadow: 0 8px 22px -12px rgba(25, 60, 90, 0.12);
+            border: 1px solid #dce9f2;
+            box-shadow: 0 8px 22px -12px #1f3b57;
         }
         h2 {
             font-size: 1.5rem;
-            font-weight: 560;
-            color: #103450;
+            font-weight: 580;
+            color: #133755;
+            border-bottom: 2px solid #c9ddec;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 2px solid #c9ddec;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
         }
         h3 {
-            color: #1d4b6e;
-            font-weight: 530;
-            margin: 1.2rem 0 0.5rem 0;
+            color: #1a4b72;
             font-size: 1.1rem;
+            margin: 1.2rem 0 0.4rem 0;
         }
         table {
             width: 100%;
@@ -127,39 +114,30 @@
             background: #ffffff;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            box-shadow: 0 2px 6px rgba(0, 20, 30, 0.04);
         }
         th {
             background: #e7f0f9;
-            color: #113855;
-            font-weight: 550;
+            color: #103b58;
+            font-weight: 540;
             padding: 0.7rem 0.5rem;
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
         }
         td {
-            padding: 0.65rem 0.4rem;
-            border-bottom: 1px solid #dde7f0;
-            vertical-align: middle;
+            padding: 0.6rem 0.4rem;
+            border-bottom: 1px solid #e0ebf5;
         }
         td[contenteditable="true"] {
             background: #fbfeff;
             border: 1px solid transparent;
             border-radius: 8px;
-            padding: 0.2rem 0.3rem;
             outline: none;
         }
         td[contenteditable="true"]:focus {
-            border-color: #3f8bcb;
+            border-color: #3080c7;
             background: #ffffff;
-        }
-        select {
-            width: 100%;
-            border: 1px solid #cbdae9;
-            border-radius: 14px;
-            padding: 0.2rem 0.3rem;
-            background: white;
         }
         .amount-cell {
             text-align: right;
@@ -167,49 +145,38 @@
             font-weight: 470;
         }
         tfoot td {
-            background: #f2f8ff;
+            background: #f3f9ff;
             font-weight: 620;
-            border-top: 2px solid #b9d1e7;
-        }
-        .table-toolbar {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: flex-end;
-            margin-bottom: 0.8rem;
+            border-top: 2px solid #c1d6ed;
         }
         .btn-sm {
             background: white;
-            border: 1px solid #b8cde0;
+            border: 1px solid #b6cde2;
             border-radius: 40px;
-            padding: 0.3rem 1.2rem;
+            padding: 0.25rem 1.2rem;
             font-size: 0.75rem;
             font-weight: 500;
             cursor: pointer;
-            transition: 0.1s;
         }
         .btn-sm:hover {
-            background: #e3f0fa;
-            border-color: #6e9fd1;
+            background: #e2effb;
         }
         .btn-icon {
             background: none;
             border: none;
-            color: #46698b;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
-            padding: 0 0.3rem;
+            color: #4f6f8f;
         }
-        .btn-icon:hover {
-            color: #bb2e2e;
-        }
+        .btn-icon:hover { color: #c0392b; }
         .editable-block {
-            background: #f7fcff;
-            border: 1px dashed #8cb2d6;
+            background: #f6fcff;
+            border: 1px dashed #7ba9d1;
             border-radius: 24px;
             padding: 1.2rem 1.8rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
             white-space: pre-wrap;
+            font-size: 0.95rem;
+            line-height: 1.5;
             margin: 1rem 0;
         }
         .total-badge {
@@ -218,58 +185,68 @@
             border-radius: 30px;
             display: inline-block;
             font-size: 0.9rem;
-            font-weight: 530;
+            font-weight: 520;
+            margin-top: 0.5rem;
         }
         .print-only { display: none; }
         @media print {
-            .sidebar, .btn-sm, .btn-icon, .table-toolbar { display: none; }
+            .sidebar, .btn-sm, .btn-icon { display: none; }
             body { background: white; }
-            .executive-sticky { border: 1px solid #aaa; box-shadow: none; }
-            section { break-inside: avoid; border: 1px solid #ccc; }
+            section { break-inside: avoid; border: 1px solid #aaa; }
         }
     </style>
 </head>
 <body>
 <div class="app" id="app">
-    <!-- sticky exec summary (updated via js) -->
+    <!-- sticky summary (existing, keeps totals) -->
     <div class="executive-sticky" id="stickyExec"></div>
 
     <div class="grid-dash">
         <!-- sidebar navigation -->
         <div class="sidebar print-hide">
-            <a href="#exec">📋 1. Executive</a>
-            <a href="#office">🪑 2. Office setup</a>
-            <a href="#rentutil">🏢 3. Rent & util</a>
-            <a href="#salaries">👥 4. Salaries</a>
-            <a href="#car">🚗 5. Car expense</a>
-            <a href="#personal">👤 6. Personal (A,S,H)</a>
-            <a href="#hammad">🧑‍💼 7. Hammad cost</a>
-            <a href="#food">🍲 8. Pooled food</a>
-            <a href="#trading">📊 9. Trading</a>
-            <a href="#capital">💰 10. Capital</a>
-            <a href="#matrix">🔗 11. Accountability</a>
-            <a href="#settlement">⚖️ 12. Settlement</a>
-            <a href="#insight">💡 13. Core insight</a>
+            <a href="#exec">📋 Exec summary</a>
+            <a href="#office">🪑 1. Office setup</a>
+            <a href="#rentutil">🏢 2. Rent+util</a>
+            <a href="#salaries">👥 3. Salaries</a>
+            <a href="#car">🚗 4. Car expense</a>
+            <a href="#personal">👤 5. Personal (A,S,H)</a>
+            <a href="#hammad">🧑 6. Hammad cost</a>
+            <a href="#food">🍲 7. Pooled food</a>
+            <a href="#trading">📊 8. Trading</a>
+            <a href="#capital">💰 9. Capital</a>
+            <a href="#matrix">🔗 10. Matrix</a>
+            <a href="#settlement">⚖️ 11. Direction</a>
+            <a href="#insight">💡 12. Core insight</a>
+            <a href="#confirm">✅ 13. Confirm items</a>
         </div>
 
-        <!-- main dynamic content -->
+        <!-- main content -->
         <div class="main" id="mainContent"></div>
     </div>
 </div>
 
 <script>
     (function() {
-        // ---------- MASTER DATA (exact preload) ----------
+        // ----- PRELOAD DATA (exact as described) -----
         let store = {
-            // editable executive block (section 1)
-            execText: `Period: Jan-2025 to Feb-2026
-Total inflow into system ≈ 6.0M–6.8M PKR
-Core business operating cost ≈ 3.9M PKR
-Non-business extraction ≈ 5.6M PKR
+            // executive text for bottom block (section 0 we also embed at top via sticky)
+            execFull: `EXECUTIVE SUMMARY
 
-Conclusion:
+Period: Jan-2025 → Feb-2026
+
+Total cash inflow into system
+≈ 6.0M–6.8M
+
+Core business operating cost
+≈ 3.9M
+
+Non-business extraction
+≈ 5.6M
+
+Key conclusion:
+
 The training business itself was profitable.
-The deficit was created by personal withdrawals, vehicle cost, pooled living costs, and trading loss.
+The deficit was created by personal withdrawals, vehicle, pooled living costs, and trading loss.
 
 Primary capital provider: Hasan
 Primary cash operator: Arslan
@@ -279,330 +256,310 @@ Employee: Hammad
 Business owes Hasan.
 Arslan and Shahzad owe business.`,
 
-            // office setup
+            // 1. OFFICE
             office: [
-                {date:'17-Jan-2025', item:'Office rent advance setup', amount:90500, category:'Office'},
-                {date:'21-Jan-2025', item:'Table and chair', amount:81000, category:'Furniture'},
-                {date:'27-Jan-2025', item:'Staff tables', amount:57000, category:'Furniture'},
-                {date:'27-Jan-2025', item:'Fans', amount:20000, category:'Electrical'},
-                {date:'10-Feb-2025', item:'Laptop', amount:95000, category:'IT'},
-                {date:'10-Feb-2025', item:'Camera', amount:10000, category:'IT'},
-                {date:'11-Feb-2025', item:'Opening items', amount:16800, category:'Setup'},
-                {date:'11-Feb-2025', item:'Table materials', amount:3600, category:'Furniture'},
-                {date:'12-Feb-2025', item:'Electrical items', amount:7300, category:'Electrical'},
-                {date:'18-Feb-2025', item:'Glass partition', amount:180000, category:'Interior'},
-                {date:'12-Mar-2025', item:'Projector', amount:70000, category:'IT'},
-                {date:'04-Apr-2025', item:'Dispenser', amount:33000, category:'Equipment'},
-                {date:'05-Apr-2025', item:'UPS battery', amount:38000, category:'Electrical'},
-                {date:'06-Apr-2025', item:'Curtains', amount:12000, category:'Interior'},
-                {date:'09-Apr-2025', item:'Systems LCD printer screen', amount:192000, category:'IT'},
-                {date:'09-Apr-2025', item:'Standies stamp', amount:7000, category:'Branding'},
-                {date:'12-Apr-2025', item:'Blinds', amount:25000, category:'Interior'},
-                {date:'21-Apr-2025', item:'Sofa cupboard', amount:16500, category:'Furniture'},
-                {date:'14-Oct-2025', item:'PC accessories', amount:10700, category:'IT'},
-                {date:'08-Jan-2026', item:'UPS repair', amount:5000, category:'Repair'}
+                {date:'17-Jan-2025', item:'Office rent advance setup', amount:90500},
+                {date:'21-Jan-2025', item:'Table + chair', amount:81000},
+                {date:'27-Jan-2025', item:'Staff tables', amount:57000},
+                {date:'27-Jan-2025', item:'Fans', amount:20000},
+                {date:'10-Feb-2025', item:'Laptop', amount:95000},
+                {date:'10-Feb-2025', item:'Camera', amount:10000},
+                {date:'11-Feb-2025', item:'Opening items', amount:16800},
+                {date:'11-Feb-2025', item:'Table materials', amount:3600},
+                {date:'12-Feb-2025', item:'Electrical items', amount:7300},
+                {date:'18-Feb-2025', item:'Glass partition', amount:180000},
+                {date:'12-Mar-2025', item:'Projector', amount:70000},
+                {date:'04-Apr-2025', item:'Dispenser', amount:33000},
+                {date:'05-Apr-2025', item:'UPS battery', amount:38000},
+                {date:'06-Apr-2025', item:'Curtains', amount:12000},
+                {date:'09-Apr-2025', item:'Systems + LCD + printer + screen', amount:192000},
+                {date:'09-Apr-2025', item:'Standies + stamp', amount:7000},
+                {date:'12-Apr-2025', item:'Blinds', amount:25000},
+                {date:'21-Apr-2025', item:'Sofa + cupboard', amount:16500},
+                {date:'14-Oct-2025', item:'PC + accessories', amount:10700},
+                {date:'08-Jan-2026', item:'UPS repair', amount:5000}
             ],
-
-            // rent
+            // 2. RENT (three summary rows)
             rent: [
-                {date:'Jan-2025', desc:'Office rent', amount:90500},
-                {date:'Feb-Apr bundle', desc:'bundle', amount:185000},
-                {date:'May-Feb monthly avg total', desc:'avg total', amount:1300000}
+                {period:'Jan-2025 office', amount:90500},
+                {period:'Feb-Apr bundle', amount:185000},
+                {period:'Monthly avg May-Feb (office+rooms)', amount:1300000} // composite
             ],
-
-            // utilities
             utilities: [
-                {date:'period', type:'Electric + PTCL + Internet total', amount:450000}
+                {desc:'Electric + PTCL + internet', amount:445000} // approx
             ],
-
-            // salaries
+            // 3. SALARIES
             salaries: [
-                {person:'Rida', role:'Salary', amount:220000},
-                {person:'Office Boys', role:'Staff', amount:140000},
-                {person:'Hammad', role:'Allowance', amount:120000}
+                {person:'Rida salary', amount:220000},
+                {person:'Office boys', amount:140000},
+                {person:'Hammad allowance (78k+45k)', amount:120000}
             ],
-
-            // car expense (summary preload, but we keep editable rows)
+            // 4. CAR expense (preload)
             car: [
                 {desc:'Rameez installments', amount:520000},
                 {desc:'Fuel cumulative', amount:420000},
-                {desc:'Repairs + fines', amount:120000}
+                {desc:'Repairs + oil + fines', amount:120000}
             ],
-
-            // personal
+            // 5. PERSONAL (three partners)
             personalArslan: [
-                {date:'10-Jan-2025', desc:'Arslan personal', amount:500000},
-                {date:'05-Mar-2025', desc:'family', amount:300000},
-                {date:'12-Jun-2025', desc:'travel', amount:200000},
-            ], // sum 1M
-
+                {date:'28-Apr-2025', desc:'160k use', amount:160000},
+                {date:'Aug–Feb', desc:'various 10k-50k', amount:600000},
+                {date:'Jan-2026', desc:'wedding 30k', amount:30000},
+                {date:'Feb-2026', desc:'220k Rameez+personal', amount:220000}
+            ],
             personalShahzad: [
-                {date:'15-Feb-2025', desc:'Shahzad withdrawal', amount:200000},
-                {date:'20-Apr-2025', desc:'personal', amount:120000},
-            ], // 320k
-
+                {date:'29-Apr-2025', desc:'personal 100k', amount:100000},
+                {date:'Aug-Nov', desc:'18k–35k entries', amount:120000},
+                {date:'Nov', desc:'shopping+salon+clothing', amount:80000},
+                {date:'Feb-2026', desc:'home 30k', amount:30000}
+            ],
             personalHasan: [
-                {date:'08-Mar-2025', desc:'Hasan personal', amount:50000},
+                {date:'various', desc:'home medicine small', amount:50000}
             ],
+            // 6. Hammad policy text (editable)
+            hammadText: `Policy: Jan–Aug fuel 6k/month = 48k ; Sep–Feb food 15k/month = 90k → total expected 138k
 
-            // hammad policy text (section 7)
-            hammadText: `Jan–Aug fuel allowance 6k/month
-Sep–Feb food allowance 15k/month
-Total expected ≈ 138k
-Ledger ≈ 120k–140k
+Ledger actual ≈ 120k–140k. Difference negligible.
 
-Conclusion: Hammad employee cost correct.`,
-
-            // pooled food
+Conclusion: Hammad correct employee cost.`,
+            // 7. POOLED FOOD
             pooledFood: [
-                {date:'03-Jan-2025', category:'staff meals', amount:120000},
-                {date:'17-Feb-2025', category:'boys meals', amount:90000},
-                {date:'22-Mar-2025', category:'tea/juice', amount:45000},
-                {date:'11-Apr-2025', category:'guest food', amount:30000},
-                {date:'09-May-2025', category:'staff meals', amount:115000},
-                {date:'15-Jun-2025', category:'boys meals', amount:200000},
-                {date:'12-Jul-2025', category:'guest', amount:60000},
-                {date:'25-Aug-2025', category:'tea', amount:40000},
-                {date:'30-Sep-2025', category:'staff', amount:180000},
-                {date:'05-Oct-2025', category:'boys', amount:220000},
-                {date:'12-Nov-2025', category:'juice', amount:50000},
-                {date:'20-Dec-2025', category:'guest', amount:80000},
-                {date:'10-Jan-2026', category:'staff', amount:70000},
-            ], // total approx 1.4M
-
-            // trading
-            trading: [
-                {date:'Exeness loss', type:'loss', amount:1500000, note:''},
-                {date:'Later profits', type:'profit', amount:1200000, note:'entered pool'}
+                {date:'daily', desc:'staff meals, boys meals, tea, juice, guest food', amount:1400000} // approx total
             ],
-
-            // capital
+            // 8. TRADING
+            trading: [
+                {desc:'Exeness loss', amount:1500000},
+                {desc:'Later profits entered pool', amount:1200000}
+            ],
+            // 9. CAPITAL
             capital: [
                 {partner:'Hasan', amount:2280000},
                 {partner:'Arslan', amount:805000},
-                {partner:'Shahzad', amount:560000}
+                {partner:'Shahzad', amount:560000},
+                {partner:'Other small', amount:0}
             ],
+            // 10. accountability matrix as text (static but we show)
+            matrixRows: [
+                ['Office setup','Hasan funded'],
+                ['Business rent/utilities','Business'],
+                ['Salaries','Business'],
+                ['Vehicle','Arslan'],
+                ['Trading loss','Arslan'],
+                ['Pooled food system','Arslan operated'],
+                ['Shahzad personal','Shahzad'],
+                ['Arslan personal','Arslan'],
+                ['Hammad','Employee cost'],
+                ['Capital provided','Hasan']
+            ],
+            // 11. settlement direction
+            settlementText: `Business owes Hasan large capital.
 
-            // matrix (static, but shown as table)
-            // settlement direction text (section 12)
-            settlementText: `Business owes Hasan large capital
-Arslan owes business
-Shahzad owes business
-Hammad neutral`,
+Arslan owes business (personal + vehicle + trading extraction).
 
-            // core insight text (section 13)
-            insightText: `If personal withdrawals, vehicle, pooled food, and trading were separated:
+Shahzad owes business (personal withdrawals).
 
-Business retained profit ≈ 2M+
+Hammad neutral.`,
+            // 12. core insight
+            insightText: `If personal + vehicle + pooled food + trading were removed:
 
-Deficit caused by withdrawal structure, not business failure.`
+Business profit retained ≈ 2M+.
+
+So business viable. Loss caused by withdrawals structure.`,
+            // 13. confirmation items (editable block)
+            confirmText: `ITEMS NEEDED TO FINALIZE EXACT NUMBERS
+
+1. Exact total paid to Rameez for car across year
+2. Whether any Arslan trading profit kept outside ledger
+3. Confirmation that 454,040 Shahzad entry earlier is true funding
+4. Whether any Hasan withdrawals missing
+
+With these four confirmations I can produce final rupee balances per partner, who owes whom exact.`
         };
 
-        // ---------- helpers ----------
-        function formatMoney(amt) {
-            return '₨ ' + Number(amt).toLocaleString('en-PK', {maximumFractionDigits:0});
-        }
+        // ------ helpers -----
+        function formatMoney(amt) { return '₨ ' + Number(amt).toLocaleString('en-PK',{maximumFractionDigits:0}); }
+        function sum(arr, key) { return arr.reduce((a,b)=>a+Number(b[key]||b.amount),0); }
 
-        // compute totals for sticky summary
-        function computeGrandTotals() {
-            let officeSum = store.office.reduce((a,b)=>a+Number(b.amount),0);
-            let rentSum = store.rent.reduce((a,b)=>a+Number(b.amount),0);
-            let utilSum = store.utilities.reduce((a,b)=>a+Number(b.amount),0);
-            let salarySum = store.salaries.reduce((a,b)=>a+Number(b.amount),0);
-            let carSum = store.car.reduce((a,b)=>a+Number(b.amount),0);
-            let arslanP = store.personalArslan.reduce((a,b)=>a+Number(b.amount),0);
-            let shahzadP = store.personalShahzad.reduce((a,b)=>a+Number(b.amount),0);
-            let hasanP = store.personalHasan.reduce((a,b)=>a+Number(b.amount),0);
-            let foodSum = store.pooledFood.reduce((a,b)=>a+Number(b.amount),0);
-            let tradingSum = store.trading.reduce((a,b)=>a+Number(b.amount),0);
-            let capitalSum = store.capital.reduce((a,b)=>a+Number(b.amount),0);
-            let personalTotal = arslanP + shahzadP + hasanP;
-            return {officeSum, rentSum, utilSum, salarySum, carSum, arslanP, shahzadP, hasanP, foodSum, tradingSum, capitalSum, personalTotal};
+        function computeTotals() {
+            return {
+                office: sum(store.office,'amount'),
+                rent: sum(store.rent,'amount'),
+                util: sum(store.utilities,'amount'),
+                salary: sum(store.salaries,'amount'),
+                car: sum(store.car,'amount'),
+                arslanP: sum(store.personalArslan,'amount'),
+                shahzadP: sum(store.personalShahzad,'amount'),
+                hasanP: sum(store.personalHasan,'amount'),
+                food: sum(store.pooledFood,'amount'),
+                trading: sum(store.trading,'amount'),
+                capital: sum(store.capital,'amount')
+            };
         }
 
         function updateSticky() {
-            let t = computeGrandTotals();
-            let totalInflow = t.capitalSum; // approx
-            let coreCost = t.rentSum + t.utilSum + t.salarySum;
-            let nonBus = t.personalTotal;
+            let t = computeTotals();
+            let inflow = t.capital;
+            let core = t.rent + t.util + t.salary;
+            let nonBus = t.arslanP + t.shahzadP + t.hasanP;
             document.getElementById('stickyExec').innerHTML = `
                 <div><span class="stat-badge">📅 Period</span><div class="stat-value">Jan25–Feb26</div></div>
-                <div><span class="stat-badge">💰 Inflow</span><div class="stat-value">${formatMoney(totalInflow)}</div></div>
-                <div><span class="stat-badge">🏭 Core cost</span><div class="stat-value">${formatMoney(coreCost)}</div></div>
+                <div><span class="stat-badge">💰 Inflow</span><div class="stat-value">${formatMoney(inflow)}</div></div>
+                <div><span class="stat-badge">🏭 Core cost</span><div class="stat-value">${formatMoney(core)}</div></div>
                 <div><span class="stat-badge">📤 Non‑bus extr</span><div class="stat-value">${formatMoney(nonBus)}</div></div>
-                <div class="conclusion-short">Business profitable, deficit from withdrawals & car.</div>
-                <button class="btn-sm" id="printBtn" style="margin-left:auto;">🖨️ PDF / Print</button>
+                <button class="btn-sm" id="printBtn">🖨️ PDF</button>
             `;
             document.getElementById('printBtn')?.addEventListener('click', ()=>window.print());
         }
 
-        // ---------- render entire app ----------
+        // ----- RENDER FULL PAGE -----
         function render() {
+            let t = computeTotals();
             let html = '';
 
-            // 1 Executive (editable block)
-            html += `<section id="exec"><h2>📋 1. Executive summary</h2>`;
-            html += `<div class="editable-block" id="execBlock" contenteditable="true">${store.execText}</div></section>`;
+            // 0. EXECUTIVE SUMMARY (detailed block at bottom? we'll place at top as first section but also keep sticky – we follow request: show full exec at bottom as well, but we add it as section 0)
+            html += `<section id="exec"><h2>📋 EXECUTIVE SUMMARY</h2>`;
+            html += `<div class="editable-block" style="font-size:1rem;" contenteditable="true" id="execFullBlock">${store.execFull}</div></section>`;
 
-            // 2 Office
-            html += `<section id="office"><h2>🪑 2. Office setup & equipment</h2>${renderOffice()}</section>`;
+            // 1. OFFICE
+            html += `<section id="office"><h2>🪑 1. OFFICE SETUP & EQUIPMENT (CAPEX)</h2>${renderOffice()}`;
+            html += `<div class="total-badge">TOTAL OFFICE CAPEX ≈ 890k–930k — current sum: ${formatMoney(t.office)}</div>`;
+            html += `<p><strong>Accountability:</strong> Business investment funded mostly by Hasan.</p></section>`;
 
-            // 3 Rent & utilities
-            html += `<section id="rentutil"><h2>🏢 3. Rent and utilities</h2><h3>Rent</h3>${renderRent()}<h3>Utilities</h3>${renderUtil()}`;
-            let rentTot = store.rent.reduce((a,b)=>a+Number(b.amount),0);
-            let utilTot = store.utilities.reduce((a,b)=>a+Number(b.amount),0);
-            html += `<div class="total-badge">Rent total: ${formatMoney(rentTot)} | Utilities total: ${formatMoney(utilTot)} | Combined: ${formatMoney(rentTot+utilTot)}</div>`;
-            html += `</section>`;
+            // 2. RENT + UTILITIES
+            html += `<section id="rentutil"><h2>🏢 2. RENT + UTILITIES</h2>`;
+            html += `<h3>Rent</h3>${renderRent()}<h3>Utilities</h3>${renderUtil()}`;
+            html += `<div class="total-badge">Total rent ≈ 1.55–1.65M | Utilities ≈ 420k–470k | Combined: ${formatMoney(t.rent+t.util)}</div>`;
+            html += `<p><strong>Accountability:</strong> Business operating cost.</p></section>`;
 
-            // 4 Salaries
-            html += `<section id="salaries"><h2>👥 4. Salaries & staff cost</h2>${renderSalaries()}</section>`;
+            // 3. SALARIES
+            html += `<section id="salaries"><h2>👥 3. SALARIES & STAFF COST</h2>${renderSalaries()}`;
+            html += `<div class="total-badge">Total ≈ 480k–520k — ${formatMoney(t.salary)}</div>`;
+            html += `<p><strong>Accountability:</strong> Business.</p></section>`;
 
-            // 5 Car
-            html += `<section id="car"><h2>🚗 5. Car expense</h2>${renderCar()}</section>`;
+            // 4. CAR
+            html += `<section id="car"><h2>🚗 4. CAR EXPENSE (FULL)</h2>${renderCar()}`;
+            html += `<div class="total-badge">Total vehicle cost ≈ 1.05M–1.15M — ${formatMoney(t.car)}</div>`;
+            html += `<p><strong>Accountability:</strong> Primarily Arslan usage.</p></section>`;
 
-            // 6 Personal (three tables)
-            html += `<section id="personal"><h2>👤 6. Personal expense by partner</h2>`;
-            html += `<div style="display:flex; flex-wrap:wrap; gap:2rem;"><div><h3>Arslan</h3>${renderPersonal('arslan')}</div>`;
-            html += `<div><h3>Shahzad</h3>${renderPersonal('shahzad')}</div>`;
-            html += `<div><h3>Hasan</h3>${renderPersonal('hasan')}</div></div></section>`;
+            // 5. PERSONAL (three)
+            html += `<section id="personal"><h2>👤 5. PERSONAL EXPENSE BY PERSON</h2>`;
+            html += `<div style="display:flex; flex-wrap:wrap; gap:2rem;"><div><h3>Arslan personal</h3>${renderPersonal('arslan')}<div class="total-badge">${formatMoney(t.arslanP)} (900k–1.1M)</div><p>Accountability: Arslan.</p></div>`;
+            html += `<div><h3>Shahzad personal</h3>${renderPersonal('shahzad')}<div class="total-badge">${formatMoney(t.shahzadP)} (280k–340k)</div><p>Accountability: Shahzad.</p></div>`;
+            html += `<div><h3>Hasan personal</h3>${renderPersonal('hasan')}<div class="total-badge">${formatMoney(t.hasanP)} (40k–60k)</div><p>Accountability: Hasan.</p></div>`;
+            html += `</div></section>`;
 
-            // 7 Hammad
-            html += `<section id="hammad"><h2>🧑‍💼 7. Hammad cost policy</h2>`;
-            html += `<div class="editable-block" id="hammadBlock" contenteditable="true">${store.hammadText}</div></section>`;
+            // 6. HAMMAD
+            html += `<section id="hammad"><h2>🧑 6. HMAD COST (CORRECTED)</h2>`;
+            html += `<div class="editable-block" contenteditable="true" id="hammadBlock">${store.hammadText}</div>`;
+            html += `<p><strong>Conclusion:</strong> Hammad correct employee cost.</p></section>`;
 
-            // 8 Pooled food
-            html += `<section id="food"><h2>🍲 8. Pooled food & living</h2>${renderFood()}</section>`;
+            // 7. POOLED FOOD
+            html += `<section id="food"><h2>🍲 7. POOLED FOOD / LIVING SYSTEM</h2>${renderFood()}`;
+            html += `<div class="total-badge">13 months total ≈ 1.3M–1.45M — ${formatMoney(t.food)}</div>`;
+            html += `<p><strong>Accountability:</strong> Shared living system, mostly operated by Arslan.</p></section>`;
 
-            // 9 Trading
-            html += `<section id="trading"><h2>📊 9. Trading</h2>${renderTrading()}</section>`;
+            // 8. TRADING
+            html += `<section id="trading"><h2>📊 8. TRADING</h2>${renderTrading()}`;
+            html += `<div class="total-badge">Net loss ${formatMoney(t.trading)} (excess loss 1.5M – profit 1.2M entered pool)</div>`;
+            html += `<p><strong>Accountability:</strong> Trading operator Arslan.</p></section>`;
 
-            // 10 Capital
-            html += `<section id="capital"><h2>💰 10. Capital contribution</h2>${renderCapital()}</section>`;
+            // 9. CAPITAL
+            html += `<section id="capital"><h2>💰 9. CAPITAL CONTRIBUTION</h2>${renderCapital()}`;
+            html += `<div class="total-badge">Total ≈ 3.6M — ${formatMoney(t.capital)}</div></section>`;
 
-            // 11 Accountability matrix (static but editable cells maybe)
-            html += `<section id="matrix"><h2>🔗 11. Accountability matrix</h2>${renderMatrix()}</section>`;
+            // 10. ACCOUNTABILITY MATRIX
+            html += `<section id="matrix"><h2>🔗 10. FINAL ACCOUNTABILITY MATRIX</h2>`;
+            html += `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; background:#f6faff; padding:1.4rem; border-radius:20px;">`;
+            store.matrixRows.forEach(r=> html+=`<div><span style="font-weight:500;">${r[0]}</span> — <span style="color:#0f4975;">${r[1]}</span></div>`);
+            html += `</div></section>`;
 
-            // 12 Settlement direction
-            html += `<section id="settlement"><h2>⚖️ 12. Settlement direction</h2>`;
-            html += `<div class="editable-block" id="settlementBlock" contenteditable="true">${store.settlementText}</div></section>`;
+            // 11. SETTLEMENT DIRECTION
+            html += `<section id="settlement"><h2>⚖️ 11. SETTLEMENT DIRECTION</h2>`;
+            html += `<div class="editable-block" contenteditable="true" id="settlementBlock">${store.settlementText}</div></section>`;
 
-            // 13 Core insight
-            html += `<section id="insight"><h2>💡 13. Core insight</h2>`;
-            html += `<div class="editable-block" id="insightBlock" contenteditable="true">${store.insightText}</div></section>`;
+            // 12. CORE INSIGHT
+            html += `<section id="insight"><h2>💡 12. CORE INSIGHT FOR HASAN</h2>`;
+            html += `<div class="editable-block" contenteditable="true" id="insightBlock">${store.insightText}</div></section>`;
+
+            // 13. CONFIRM ITEMS
+            html += `<section id="confirm"><h2>✅ 13. ITEMS NEEDED TO FINALIZE</h2>`;
+            html += `<div class="editable-block" contenteditable="true" id="confirmBlock">${store.confirmText}</div></section>`;
 
             document.getElementById('mainContent').innerHTML = html;
 
-            // attach events for editable tables (simplified via global listener)
-            attachTableEvents();
+            // attach events
+            attachEvents();
             updateSticky();
-            storeEditableBlocks();
+            saveBlocksOnBlur();
         }
 
-        // Table rendering helpers (simplified but functional)
+        // ---- table render helpers ----
         function renderOffice() {
-            let rows = store.office.map((r,i) => `<tr>
-                <td contenteditable="true" data-table="office" data-field="date" data-row="${i}">${r.date}</td>
-                <td contenteditable="true" data-table="office" data-field="item" data-row="${i}">${r.item}</td>
-                <td class="amount-cell" contenteditable="true" data-table="office" data-field="amount" data-row="${i}">${r.amount}</td>
-                <td><select data-table="office" data-field="category" data-row="${i}">${['Office','Furniture','Electrical','IT','Setup','Interior','Equipment','Branding','Repair'].map(c=>`<option ${c==r.category?'selected':''}>${c}</option>`).join('')}</select></td>
-                <td><button class="btn-icon" data-delete="office" data-row="${i}">🗑️</button></td>
-            </tr>`).join('');
-            let total = store.office.reduce((a,b)=>a+Number(b.amount),0);
-            return `<div class="table-toolbar"><button class="btn-sm" data-add="office">➕ Add row</button></div>
-            <table><thead><tr><th>Date</th><th>Item</th><th>Amount</th><th>Category</th><th></th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td colspan="2">Total</td><td class="amount-cell">${formatMoney(total)}</td><td></td><td></td></tr></tfoot></table>`;
+            let rows = store.office.map((r,i)=>`<tr><td contenteditable="true" data-table="office" data-field="date" data-row="${i}">${r.date}</td><td contenteditable="true" data-table="office" data-field="item" data-row="${i}">${r.item}</td><td class="amount-cell" contenteditable="true" data-table="office" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="office" data-row="${i}">🗑️</button></td></tr>`).join('');
+            return `<div class="table-toolbar"><button class="btn-sm" data-add="office">➕ Add row</button></div><table><thead><tr><th>Date</th><th>Item</th><th>Amount</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
         }
-
         function renderRent() {
-            let rows = store.rent.map((r,i)=>`<tr><td contenteditable="true" data-table="rent" data-field="date" data-row="${i}">${r.date}</td><td contenteditable="true" data-table="rent" data-field="desc" data-row="${i}">${r.desc}</td><td class="amount-cell" contenteditable="true" data-table="rent" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="rent" data-row="${i}">🗑️</button></td></tr>`).join('');
-            return `<div class="table-toolbar"><button class="btn-sm" data-add="rent">➕ Add rent</button></div><table>${rows}</table>`;
+            let rows = store.rent.map((r,i)=>`<tr><td contenteditable="true" data-table="rent" data-field="period" data-row="${i}">${r.period}</td><td class="amount-cell" contenteditable="true" data-table="rent" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="rent" data-row="${i}">🗑️</button></td></tr>`).join('');
+            return `<div class="table-toolbar"><button class="btn-sm" data-add="rent">➕ Add</button></div><table><tr><th>Period</th><th>Amount</th><th></th></tr>${rows}</table>`;
         }
         function renderUtil() {
-            let rows = store.utilities.map((r,i)=>`<tr><td contenteditable="true" data-table="utilities" data-field="date" data-row="${i}">${r.date}</td><td contenteditable="true" data-table="utilities" data-field="type" data-row="${i}">${r.type}</td><td class="amount-cell" contenteditable="true" data-table="utilities" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="utilities" data-row="${i}">🗑️</button></td></tr>`).join('');
-            return `<div class="table-toolbar"><button class="btn-sm" data-add="utilities">➕ Add util</button></table><table>${rows}</table>`;
+            let rows = store.utilities.map((r,i)=>`<tr><td contenteditable="true" data-table="utilities" data-field="desc" data-row="${i}">${r.desc}</td><td class="amount-cell" contenteditable="true" data-table="utilities" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="utilities" data-row="${i}">🗑️</button></td></tr>`).join('');
+            return `<div class="table-toolbar"><button class="btn-sm" data-add="utilities">➕ Add</button></div><table>${rows}</table>`;
         }
         function renderSalaries() {
-            let rows = store.salaries.map((r,i)=>`<tr><td contenteditable="true" data-table="salaries" data-field="person" data-row="${i}">${r.person}</td><td contenteditable="true" data-table="salaries" data-field="role" data-row="${i}">${r.role}</td><td class="amount-cell" contenteditable="true" data-table="salaries" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="salaries" data-row="${i}">🗑️</button></td></tr>`).join('');
-            return `<div class="table-toolbar"><button class="btn-sm" data-add="salaries">➕ Add salary</button></div><table>${rows}</table>`;
+            let rows = store.salaries.map((r,i)=>`<tr><td contenteditable="true" data-table="salaries" data-field="person" data-row="${i}">${r.person}</td><td class="amount-cell" contenteditable="true" data-table="salaries" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="salaries" data-row="${i}">🗑️</button></td></tr>`).join('');
+            return `<div class="table-toolbar"><button class="btn-sm" data-add="salaries">➕ Add</button></div><table><tr><th>Person</th><th>Amount</th><th></th></tr>${rows}</table>`;
         }
         function renderCar() {
             let rows = store.car.map((r,i)=>`<tr><td contenteditable="true" data-table="car" data-field="desc" data-row="${i}">${r.desc}</td><td class="amount-cell" contenteditable="true" data-table="car" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="car" data-row="${i}">🗑️</button></td></tr>`).join('');
-            return `<div class="table-toolbar"><button class="btn-sm" data-add="car">➕ Add row</button></div><table>${rows}</table>`;
+            return `<div class="table-toolbar"><button class="btn-sm" data-add="car">➕ Add</button></div><table>${rows}</table>`;
         }
         function renderPersonal(who) {
             let arr = store['personal'+who.charAt(0).toUpperCase()+who.slice(1)];
             let rows = arr.map((r,i)=>`<tr><td contenteditable="true" data-table="personal${who}" data-field="date" data-row="${i}">${r.date}</td><td contenteditable="true" data-table="personal${who}" data-field="desc" data-row="${i}">${r.desc}</td><td class="amount-cell" contenteditable="true" data-table="personal${who}" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="personal${who}" data-row="${i}">🗑️</button></td></tr>`).join('');
-            let total = arr.reduce((a,b)=>a+Number(b.amount),0);
-            return `<div class="table-toolbar"><button class="btn-sm" data-add="personal${who}">➕ Add</button></div><table>${rows}<tfoot><tr><td colspan="2">Total</td><td class="amount-cell">${formatMoney(total)}</td><td></td></tr></tfoot></table>`;
+            return `<div class="table-toolbar"><button class="btn-sm" data-add="personal${who}">➕ Add</button></div><table><thead><tr><th>Date</th><th>Description</th><th>Amount</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
         }
         function renderFood() {
-            let rows = store.pooledFood.map((r,i)=>`<tr><td contenteditable="true" data-table="pooledFood" data-field="date" data-row="${i}">${r.date}</td><td contenteditable="true" data-table="pooledFood" data-field="category" data-row="${i}">${r.category}</td><td class="amount-cell" contenteditable="true" data-table="pooledFood" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="pooledFood" data-row="${i}">🗑️</button></td></tr>`).join('');
-            let total = store.pooledFood.reduce((a,b)=>a+Number(b.amount),0);
-            return `<div class="table-toolbar"><button class="btn-sm" data-add="pooledFood">➕ Add</button></div><table>${rows}<tfoot><tr><td colspan="2">Total ≈ 1.4M</td><td class="amount-cell">${formatMoney(total)}</td><td></td></tr></tfoot></table>`;
+            let rows = store.pooledFood.map((r,i)=>`<tr><td contenteditable="true" data-table="pooledFood" data-field="date" data-row="${i}">${r.date}</td><td contenteditable="true" data-table="pooledFood" data-field="desc" data-row="${i}">${r.desc}</td><td class="amount-cell" contenteditable="true" data-table="pooledFood" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="pooledFood" data-row="${i}">🗑️</button></td></tr>`).join('');
+            return `<div class="table-toolbar"><button class="btn-sm" data-add="pooledFood">➕ Add</button></div><table>${rows}</table>`;
         }
         function renderTrading() {
-            let rows = store.trading.map((r,i)=>`<tr><td contenteditable="true" data-table="trading" data-field="date" data-row="${i}">${r.date}</td><td contenteditable="true" data-table="trading" data-field="type" data-row="${i}">${r.type}</td><td class="amount-cell" contenteditable="true" data-table="trading" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="trading" data-row="${i}">🗑️</button></td></tr>`).join('');
+            let rows = store.trading.map((r,i)=>`<tr><td contenteditable="true" data-table="trading" data-field="desc" data-row="${i}">${r.desc}</td><td class="amount-cell" contenteditable="true" data-table="trading" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="trading" data-row="${i}">🗑️</button></td></tr>`).join('');
             return `<div class="table-toolbar"><button class="btn-sm" data-add="trading">➕ Add</button></div><table>${rows}</table>`;
         }
         function renderCapital() {
             let rows = store.capital.map((r,i)=>`<tr><td contenteditable="true" data-table="capital" data-field="partner" data-row="${i}">${r.partner}</td><td class="amount-cell" contenteditable="true" data-table="capital" data-field="amount" data-row="${i}">${r.amount}</td><td><button class="btn-icon" data-delete="capital" data-row="${i}">🗑️</button></td></tr>`).join('');
             return `<div class="table-toolbar"><button class="btn-sm" data-add="capital">➕ Add</button></div><table>${rows}</table>`;
         }
-        function renderMatrix() {
-            const matrix = [
-                ['Office setup','Hasan funded'],['Business rent utilities','Business'],['Salaries','Business'],
-                ['Vehicle','Arslan'],['Trading loss','Arslan'],['Pooled food system','Arslan operated'],
-                ['Shahzad personal','Shahzad'],['Arslan personal','Arslan'],['Hammad','Employee'],
-                ['Capital provided','Hasan']
-            ];
-            return `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; background:#f6faff; padding:1.4rem; border-radius:24px;">${
-                matrix.map(m=>`<div><span style="font-weight:500;">${m[0]}</span> <span style="color:#0b4975;">— ${m[1]}</span></div>`).join('')
-            }</div>`;
-        }
 
-        // event handling for add/delete/edits
-        function attachTableEvents() {
+        // ---- event handlers ----
+        function attachEvents() {
             document.querySelectorAll('[contenteditable="true"]').forEach(el => {
                 el.addEventListener('blur', function(e) {
                     let table = this.dataset.table;
                     let field = this.dataset.field;
                     let row = this.dataset.row;
-                    if (!table || row === undefined) return;
-                    let val = this.innerText.trim();
-                    if (field === 'amount') val = parseFloat(val.replace(/[₨,\s]/g,'')) || 0;
-                    if (store[table] && store[table][row]) {
+                    if (table && field && row!==undefined && store[table] && store[table][row]) {
+                        let val = this.innerText.trim();
+                        if (field==='amount') val = parseFloat(val.replace(/[₨,\s]/g,'')) || 0;
                         store[table][row][field] = val;
                         localStorage.setItem('ledger13', JSON.stringify(store));
-                    }
-                    render(); // re-render to reflect totals
-                });
-            });
-            document.querySelectorAll('select').forEach(sel => {
-                sel.addEventListener('change', function(e) {
-                    let table = this.dataset.table;
-                    let field = this.dataset.field;
-                    let row = this.dataset.row;
-                    if (store[table] && store[table][row]) {
-                        store[table][row][field] = this.value;
-                        localStorage.setItem('ledger13', JSON.stringify(store));
-                        render();
+                        render(); // re-render to refresh totals
                     }
                 });
             });
             document.querySelectorAll('[data-add]').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    let table = btn.dataset.add;
-                    let empty = {};
-                    if (table === 'office') store.office.push({date:'', item:'', amount:0, category:'Office'});
-                    else if (table === 'rent') store.rent.push({date:'', desc:'', amount:0});
-                    else if (table === 'utilities') store.utilities.push({date:'', type:'', amount:0});
-                    else if (table === 'salaries') store.salaries.push({person:'', role:'', amount:0});
-                    else if (table === 'car') store.car.push({desc:'', amount:0});
-                    else if (table.includes('personal')) {
-                        let key = table; // personalArslan etc
-                        store[key].push({date:'', desc:'', amount:0});
-                    } else if (table === 'pooledFood') store.pooledFood.push({date:'', category:'', amount:0});
-                    else if (table === 'trading') store.trading.push({date:'', type:'', amount:0});
-                    else if (table === 'capital') store.capital.push({partner:'', amount:0});
+                    let key = btn.dataset.add;
+                    if (key === 'office') store.office.push({date:'', item:'', amount:0});
+                    else if (key === 'rent') store.rent.push({period:'', amount:0});
+                    else if (key === 'utilities') store.utilities.push({desc:'', amount:0});
+                    else if (key === 'salaries') store.salaries.push({person:'', amount:0});
+                    else if (key === 'car') store.car.push({desc:'', amount:0});
+                    else if (key.includes('personal')) store[key].push({date:'', desc:'', amount:0});
+                    else if (key === 'pooledFood') store.pooledFood.push({date:'', desc:'', amount:0});
+                    else if (key === 'trading') store.trading.push({desc:'', amount:0});
+                    else if (key === 'capital') store.capital.push({partner:'', amount:0});
                     localStorage.setItem('ledger13', JSON.stringify(store));
                     render();
                 });
@@ -618,24 +575,23 @@ Deficit caused by withdrawal structure, not business failure.`
             });
         }
 
-        function storeEditableBlocks() {
-            let execBlk = document.getElementById('execBlock');
-            if (execBlk) execBlk.addEventListener('blur', function(){ store.execText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
-            let hammBlk = document.getElementById('hammadBlock');
-            if (hammBlk) hammBlk.addEventListener('blur', function(){ store.hammadText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
-            let settleBlk = document.getElementById('settlementBlock');
-            if (settleBlk) settleBlk.addEventListener('blur', function(){ store.settlementText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
-            let insightBlk = document.getElementById('insightBlock');
-            if (insightBlk) insightBlk.addEventListener('blur', function(){ store.insightText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
+        function saveBlocksOnBlur() {
+            let execFull = document.getElementById('execFullBlock');
+            if(execFull) execFull.addEventListener('blur', function(){ store.execFull = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
+            let hamm = document.getElementById('hammadBlock');
+            if(hamm) hamm.addEventListener('blur', function(){ store.hammadText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
+            let settle = document.getElementById('settlementBlock');
+            if(settle) settle.addEventListener('blur', function(){ store.settlementText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
+            let insight = document.getElementById('insightBlock');
+            if(insight) insight.addEventListener('blur', function(){ store.insightText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
+            let confirm = document.getElementById('confirmBlock');
+            if(confirm) confirm.addEventListener('blur', function(){ store.confirmText = this.innerText; localStorage.setItem('ledger13', JSON.stringify(store)); });
         }
 
-        // Load from localStorage if available
+        // load from localStorage
         const saved = localStorage.getItem('ledger13');
-        if (saved) {
-            try { store = JSON.parse(saved); } catch(e) {}
-        } else {
-            localStorage.setItem('ledger13', JSON.stringify(store));
-        }
+        if (saved) { try { store = JSON.parse(saved); } catch(e) {} }
+        else { localStorage.setItem('ledger13', JSON.stringify(store)); }
 
         render();
         window.addEventListener('beforeunload', ()=>localStorage.setItem('ledger13', JSON.stringify(store)));
